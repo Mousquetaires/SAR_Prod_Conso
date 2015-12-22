@@ -1,4 +1,5 @@
-package Service;
+package service;
+
 
 public class Consommateur {
     public String id;
@@ -11,7 +12,7 @@ public class Consommateur {
     public void demande() {
     }
 
-    public void surReceptionDe() {
+    public static void surReceptionDe(String message) {
     }
 
 }

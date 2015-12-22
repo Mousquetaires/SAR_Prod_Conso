@@ -1,4 +1,4 @@
-package Reseau;
+package reseau;
 
 
 public class ServeurTampon {

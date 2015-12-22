@@ -1,11 +1,13 @@
-package Reseau;
+package reseau;
 
 
-public class Consommateur {
+
+
+public class Producteur {
    
     public String socket;
 
-    
+   
     public String in;
 
     
