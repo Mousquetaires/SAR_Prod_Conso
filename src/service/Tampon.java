@@ -1,16 +1,5 @@
 package service;
 
-<<<<<<< HEAD
-public class Tampon {
-   String id;
-   String tabMess;
-   String nbMess;
-   String outc;
-   String inp;
-   public void surReceptionDeP() {}
-   public void surReceptionDeC() {}
-   public void autorisation() {}
-=======
 import reseau.*;
 
 public class Tampon {   
@@ -57,6 +46,5 @@ public class Tampon {
     		serv.envoyerA(consommateur, refus);
     	}
     }
->>>>>>> 9a6a7ec6e985b3b635b9d0041c97893f151d0f7a
 
 }
