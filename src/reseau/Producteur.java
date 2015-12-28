@@ -37,6 +37,9 @@ public class Producteur {
 				System.out.println("Connexion établit avec l'hote :"+dest);
 				in=new BufferedReader(new InputStreamReader(socket.getInputStream()));
 				out= new PrintStream(socket.getOutputStream());
+				out.println("producteur");
+				String p= in.readLine();
+				System.out.println(p);
 				out.println(message);
 				receptionR();
 						
