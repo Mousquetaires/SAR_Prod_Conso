@@ -8,7 +8,7 @@ public class Producteur {
 	public void consommer() {}
     public void demande() {}
 
-	public static void surReceptionDe(String message) {}
+	public static void surReceptionDe(String message){}
 
     
    
