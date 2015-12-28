@@ -1,6 +1,6 @@
 package service;
 
-import reseau.*;
+import reseau.ThreadTampon;
 
 public class Tampon {   
     public String id;
@@ -8,13 +8,13 @@ public class Tampon {
     public int nbMess;
     public int outC;   
     public int inP;
-    ServeurTampon serv;
-    String req;
+    ThreadTampon serv;
+    String req = "REQ";
+    String ack = "ACK";
+    String refus = "REFUS";
     
     
-    public boolean autorisation(String producteur) {
-    	String ack = "Vous avez l'autorisation de produir un message";
-    	String refus = "Vous ne pouvez pas produir un message pour le moment";
+    public boolean autorisation(String producteur) {    	
     	if(nbMess<tabMess.length){
     		serv.envoyerA(producteur, ack);
     		return true;
@@ -36,7 +36,6 @@ public class Tampon {
 
    
     public void surReceptionDeC(String consommateur, String msg) {
-    	String refus = "Il n'y a pas de messages dans le tampon"; 
     	if(nbMess>0){
     		msg = tabMess[outC];
     		outC = (outC+1)%tabMess.length;
