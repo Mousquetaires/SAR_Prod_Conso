@@ -44,6 +44,7 @@ public class Consommateur {
 
        
     public void envoyerA(String dest,String message) {
+    	String mess;
     	try {
     		this.dest=InetAddress.getByName(dest);
 			socket= new Socket(this.dest,portdest);
@@ -51,6 +52,9 @@ public class Consommateur {
 				System.out.println("Connexion établit avec l'hote :"+dest);
 			in=new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			out= new PrintStream(socket.getOutputStream());
+			out.println("consommateur");
+			mess=in.readLine();
+			System.out.println(mess);
 			out.println(message);
 			reception();
 						
