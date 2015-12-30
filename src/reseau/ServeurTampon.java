@@ -20,7 +20,7 @@ public class ServeurTampon {
     			ThreadTampon threadTampon = new ThreadTampon(socketService);
     		}
         }catch(IOException e){
-        	e.getMessage();    	
+        	e.getMessage();   
         }
         finally{
         	try{
