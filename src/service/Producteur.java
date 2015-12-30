@@ -1,6 +1,5 @@
 package service;
-import reseau.*;
-
+import java.net.InetAddress;
 
 public class Producteur {
 	
@@ -31,7 +30,7 @@ public class Producteur {
     	p.envoyerA(dest, req);
     }
 
-	public static void surReceptionDe(String dest, String mess){
+	public void surReceptionDe(InetAddress dest, String mess){
 		if(mess == "ACK"){
 			autorisation = true;
 		}else{

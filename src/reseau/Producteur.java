@@ -18,20 +18,9 @@ public class Producteur {
     int portdest=4202 ;//port d'écoute du destinataire ou du serveur
     BufferedReader in;
     PrintStream out;
+    service.Producteur p;
     
-
-<<<<<<< HEAD
-    public void produire() {
-    	
-    }
-
-    public void demande(boolean autorisation) {
-    	if(autorisation = true){
-    		produire();
-    	}
-    }
-=======
->>>>>>> 083acfc09f17fd03e599be3ebba6f52a22610d76
+   
 
     public void envoyerA(String dest,String message) {
     	try {
@@ -57,7 +46,7 @@ public class Producteur {
     	try {
 			String rep=in.readLine();
 			//String hote=(String)socket.getRemoteSocketAddress();
-			service.Consommateur.surReceptionDe(rep);//reste comment faire l'adresse de l'emetteur afaire
+			p.surReceptionDe(dest, rep);;//reste comment faire l'adresse de l'emetteur afaire
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
