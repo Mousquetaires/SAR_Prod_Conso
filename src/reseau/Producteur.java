@@ -20,6 +20,18 @@ public class Producteur {
     PrintStream out;
     
 
+<<<<<<< HEAD
+    public void produire() {
+    	
+    }
+
+    public void demande(boolean autorisation) {
+    	if(autorisation = true){
+    		produire();
+    	}
+    }
+=======
+>>>>>>> 083acfc09f17fd03e599be3ebba6f52a22610d76
 
     public void envoyerA(String dest,String message) {
     	try {

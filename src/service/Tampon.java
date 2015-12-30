@@ -24,7 +24,7 @@ public class Tampon {
     	}
     }
     
-    public void surReceptionDeP(String producteur, String msg) {
+    public synchronized void surReceptionDeP(String producteur, String msg) {
     	if(msg != req){
     		tabMess[inP] = msg;
     		inP = (inP+1)%tabMess.length;
@@ -33,9 +33,8 @@ public class Tampon {
     		this.autorisation(producteur);
     	}
     }
-
    
-    public void surReceptionDeC(String consommateur, String msg) {
+    public synchronized void surReceptionDeC(String consommateur, String msg) {
     	if(nbMess>0){
     		msg = tabMess[outC];
     		outC = (outC+1)%tabMess.length;

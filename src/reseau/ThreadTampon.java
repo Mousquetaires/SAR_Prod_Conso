@@ -37,8 +37,7 @@ public class ThreadTampon extends Thread{
 	}
 	
 	public String type(){
-		String p = "producteur";
-		//String c = "Consommateur";		
+		String p = "producteur";	
 		String str = "";
 		try {
 			str = in.readLine();
