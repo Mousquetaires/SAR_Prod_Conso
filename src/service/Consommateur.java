@@ -9,8 +9,8 @@ public class Consommateur {
     
     
 
-    public Consommateur(reseau.Consommateur conso) {
-    	this.cons=conso;
+    public Consommateur(reseau.Consommateur consoR) {
+    	this.cons=consoR;
     }
 
     public void demande(String dest ) {
