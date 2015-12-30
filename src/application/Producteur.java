@@ -2,10 +2,12 @@ package application;
 
 import java.util.Scanner;
 
+import service.Tampon;
+
 public class Producteur {
 	
 
-	service.Producteur p;
+	service.Producteur pro;
 	service.Tampon t;
 	Scanner scan = new Scanner(System.in);
 	String tamp;
@@ -19,10 +21,7 @@ public class Producteur {
 		// TODO Auto-generated method stub
 		
 		
-		while(true){
-			
-			
-		}
+		
 
 	}
 
