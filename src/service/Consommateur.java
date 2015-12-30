@@ -3,16 +3,28 @@ package service;
 
 public class Consommateur {
     public String id;
-
     public String mess;
+    reseau.Consommateur cons;
+    String req="REQ";
+    
+    
 
-    public void consommer() {
+    public Consommateur(reseau.Consommateur conso) {
+    	this.cons=conso;
     }
 
-    public void demande() {
+    public void demande(String dest ) {
+    	cons.envoyerA(dest, req);
+    	
     }
 
     public static void surReceptionDe(String message) {
+    	if(message!="REFUS"){
+    		System.out.println(message);
+    	}else{
+    		System.out.println("Pas de message");
+    	}
+    		
     }
 
 }
