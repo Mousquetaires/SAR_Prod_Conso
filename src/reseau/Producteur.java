@@ -1,11 +1,10 @@
 package reseau;
+import java.net.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
-import java.net.InetAddress;
-import java.net.Socket;
 
 public class Producteur {
    
@@ -17,47 +16,59 @@ public class Producteur {
     int portdest=4020 ;//port d'écoute du destinataire ou du serveur
     BufferedReader in;
     PrintStream out;
-    boolean demander=false;
- 
-
+    public boolean demander=false;
     
- 
-    public void envoyerA(String dest,String message) {
+    public Producteur(){
+    	String desti="192.168.1.33";
     	try {
-    		if(demander==false){
-	    		this.dest=InetAddress.getByName(dest);
-	    		//System.out.println("apreé envoyer-a");
-				socket= new Socket(this.dest,portdest);
-				if(socket.isConnected())
-					System.out.println("Connexion établit avec l'hote :"+dest);
-				in=new BufferedReader(new InputStreamReader(socket.getInputStream()));
-				out= new PrintStream(socket.getOutputStream());
-    		}
-			
-				out.println("producteur");
-				String p= in.readLine();
-				System.out.println(p);
-				
-			
-				Thread.currentThread().sleep(2000);
-				out.println(message);
-				receptionR();
-				
-								
-			} catch (IOException | InterruptedException e) {
-			System.out.println("Adresse inconnue");
+			dest= InetAddress.getByName(desti)	;
+		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+    }
+    
+    
+    public void connexion(){
+    	try {
+			socket= new Socket(this.dest,portdest);
+			if(socket.isConnected())
+				System.out.println("Connexion établit avec l'hote :"+dest);
+			in=new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			out= new PrintStream(socket.getOutputStream());
+			out.println("producteur");
+			String p= in.readLine();
+			System.out.println(p);
+		} catch (IOException e) {
+			System.out.println("Adresse inconnue");
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+    }
+    
+    public void envoyerA(String message) {
+    	if(demander==false){
+    		System.out.println("dans envoyer a de if");
+    		connexion();
+    		out.println(message);
+    		receptionR();
+    		
+    	}else{
+    		System.out.println("dans envoyer a de else");
+    		connexion();
+    		out.println(message);
+    	}
+    	
+	
     }
     public void receptionR() {
     	try {
     		//System.out.println("reception r");
  		
 			String rep=in.readLine();
-			//System.out.println("recuperation r");
+			System.out.println(rep);
 			service.Producteur.surReceptionDe(rep);
-			
+			demander=true;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

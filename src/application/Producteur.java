@@ -9,7 +9,7 @@ public class Producteur {
 	
 
 	static service.Producteur pro;
-	service.Tampon t;
+	
 	static Scanner scan = new Scanner(System.in);
 	String tamp;
 	
@@ -26,24 +26,17 @@ public class Producteur {
 		pro= new service.Producteur(proR);
 		
 		while(true){
-			System.out.println("Bienvenue dans le Producteur/n Veuillez entrer l'adresse du tampon ");
+			System.out.println("Bienvenue dans le Producteur \nVeuillez appuyer sur Entrer pour savoir l'état du Tampon ");
 			String temp=saisirMessage();
 			pro.demande(temp);
 			//System.out.println("Entre dans saisir message");
 			//System.out.println("Je suis dans autorisation");
-			System.out.println("Veuillez entrer votre message a envoyer au Tampon");
-			String tem2=saisirMessage();
-			pro.produire(temp, tem2);
-				
-			
-			
-			
-			
-			
+			if(pro.autorisation){
+				System.out.println("Veuillez entrer votre message a envoyer au Tampon");
+				String tem2=saisirMessage();
+				pro.produire(tem2);
+			}						
 		}
-		
-		
-
 	}
 
 }
