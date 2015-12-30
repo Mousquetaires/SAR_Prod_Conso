@@ -11,31 +11,40 @@ public class Producteur {
    
 	public String id;
     public String mess;
-    public boolean autorisation = false;
-    
+     
     Socket socket;
     InetAddress dest;
-    int portdest=4202 ;//port d'écoute du destinataire ou du serveur
+    int portdest=4020 ;//port d'écoute du destinataire ou du serveur
     BufferedReader in;
     PrintStream out;
+    boolean demander=false;
+ 
+
     
-
-
+ 
     public void envoyerA(String dest,String message) {
     	try {
-    		this.dest=InetAddress.getByName(dest);
-			socket= new Socket(this.dest,portdest);
-			if(socket.isConnected())
-				System.out.println("Connexion établit avec l'hote :"+dest);
+    		if(demander==false){
+	    		this.dest=InetAddress.getByName(dest);
+	    		//System.out.println("apreé envoyer-a");
+				socket= new Socket(this.dest,portdest);
+				if(socket.isConnected())
+					System.out.println("Connexion établit avec l'hote :"+dest);
 				in=new BufferedReader(new InputStreamReader(socket.getInputStream()));
 				out= new PrintStream(socket.getOutputStream());
+    		}
+			
 				out.println("producteur");
 				String p= in.readLine();
 				System.out.println(p);
+				
+			
+				Thread.currentThread().sleep(2000);
 				out.println(message);
 				receptionR();
-						
-		} catch (IOException e) {
+				
+								
+			} catch (IOException | InterruptedException e) {
 			System.out.println("Adresse inconnue");
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -43,23 +52,17 @@ public class Producteur {
     }
     public void receptionR() {
     	try {
+    		//System.out.println("reception r");
+ 		
 			String rep=in.readLine();
-			//String hote=(String)socket.getRemoteSocketAddress();
-			service.Consommateur.surReceptionDe(rep);//reste comment faire l'adresse de l'emetteur afaire
+			//System.out.println("recuperation r");
+			service.Producteur.surReceptionDe(rep);
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     	finally{
-    	try {
-			in.close();
-			out.close();
-	    	socket.close();
-	    	System.out.println("Déconnexion");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
     	
     	}
     }

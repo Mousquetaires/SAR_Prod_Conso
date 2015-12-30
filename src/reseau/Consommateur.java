@@ -11,7 +11,7 @@ public class Consommateur {
 	int id;
     Socket socket;
     InetAddress dest;
-    int portdest=4202 ;//port d'écoute du destinataire ou du serveur
+    int portdest=4020 ;//port d'écoute du destinataire ou du serveur
 
     BufferedReader in;
     PrintStream out;
@@ -48,6 +48,7 @@ public class Consommateur {
     public void envoyerA(String dest,String message) {
     	String mess;
     	try {
+    		System.out.println("dans envoyer a");
     		this.dest=InetAddress.getByName(dest);
 			socket= new Socket(this.dest,portdest);
 			if(socket.isConnected())

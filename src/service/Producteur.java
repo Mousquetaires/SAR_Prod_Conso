@@ -4,16 +4,21 @@ import reseau.*;
 
 public class Producteur {
 	
-	static boolean autorisation;
+	public static boolean autorisation=false;
 	String id;
 	String mess;
 	reseau.Producteur p;
-	
+	static String ack="ACK";
+	static String refu="REFUS";
+		
 	/*A definir le requete*/
 	String req = "REQ";
 	
 	public Producteur(reseau.Producteur p){
 		this.p = p;
+	}
+	public static boolean getAuto(){
+		return autorisation;
 	}
 	public void produire(String dest, String mess) {
 		
@@ -31,13 +36,15 @@ public class Producteur {
     	p.envoyerA(dest, req);
     }
 
-	public static void surReceptionDe(String dest, String mess){
-		if(mess == "ACK"){
+	public static void surReceptionDe(String mess){
+		System.out.println("dans sureceptionDe ");
+		if(mess.equals(ack)){
 			autorisation = true;
 		}else{
-			if(mess == "REFUS"){
+			if(mess.equals(refu)){
 				System.out.println("Rien a faire");
 			}
+			
 		}
 	}
 
