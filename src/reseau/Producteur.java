@@ -21,6 +21,7 @@ public class Producteur {
     
 
     public void produire() {
+    	
     }
 
     public void demande(boolean autorisation) {
